@@ -26,7 +26,7 @@ private boolean isWeekend;
             this.price = 124.00;
         }
         if (this.isWeekend){
-            this.price =this.price * 1.10;
+            this.price = this.price * 1.10;
         }
     }
 
