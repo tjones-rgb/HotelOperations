@@ -5,9 +5,7 @@ import java.time.LocalTime;
 public class Employee {
     private int employeeId;
     private String name, department;
-    private double payRate;
-    private double hoursWorked;
-    private double punchInTime;
+    private double payRate, hoursWorked, startTime;
 
     public Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
         this.employeeId = employeeId;
@@ -42,16 +40,29 @@ public class Employee {
             return 0;
         }
     }
-public void punchIn(double time){
-        this.punchInTime = LocalTime.now().toSecondOfDay();
-    System.out.println(name + " Punch In At " + this.punchInTime + " hours. ");
-}
-public void punchOut(double time){
-    double currentTimeInHours = LocalTime.now().toSecondOfDay();
-    double shiftHours = time = this.punchInTime;
-    this.hoursWorked += shiftHours;
-    System.out.println(name + " punch out at " + currentTimeInHours + " Hours Work This Shift " + shiftHours);
-}
 
+    public void punchIn(double time) {
+        this.startTime = time;
+    }
+
+    public void punchIn() {
+        this.startTime = 0;//How to get the time, froim the localtime;
+    }
+
+    public void punchOut(double time) {
+        this.hoursWorked += (time - this.startTime);
+        this.startTime = 0;
+    }
+
+    public void punchTimeCard(double time) {
+
+        if (this.startTime > 0) { //punch out
+            this.hoursWorked += (time - this.startTime);
+            this.startTime = 0;
+        } else {
+            this.startTime = time;
+        }
+
+    }
 
 }
