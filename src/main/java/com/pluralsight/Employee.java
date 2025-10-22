@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Employee {
@@ -43,10 +45,6 @@ public class Employee {
 
     public void punchIn(double time) {
         this.startTime = time;
-    }
-
-    public void punchIn() {
-        this.startTime = 0;//How to get the time, froim the localtime;
     }
 
     public void punchOut(double time) {
